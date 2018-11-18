@@ -1,0 +1,14 @@
+!.gitignore
+disable
+*.act
+
+uwsgi_static.conf
+
+titan.conf
+apps.titan.custom
+titano.conf
+apps.titano.custom
+cipijs.conf
+apps.cipijs.custom
+oauth2.conf
+apps.oauth2.custom
