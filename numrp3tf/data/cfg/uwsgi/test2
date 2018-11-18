@@ -1,0 +1,43 @@
+[uwsgi]
+plugins = logfile, python3, gevent3
+
+; base = /var/www/html/%n
+; pythonpath = %(base)
+virtualenv = /var/envs/env
+
+uid = uwsgi
+gid = uwsgi
+chown-socket = uwsgi:uwsgi
+chmod-socket = 664
+socket = 127.0.0.1:3035
+pidfile = /run/uwsgi/%n.pid
+vacuum = true
+; harakiri = 20
+post-buffering = 8192
+; enable-threads
+; threads = 20
+
+idle = 30
+die-on-idle = true
+
+filemonitor = inotify
+debug = True
+
+; remove autoreload on production
+py-autoreload = 3
+
+http-websockets = true
+gevent = 100
+
+chdir = /var/www/html/%n
+
+env = FLASK_SETTINGS_MODULE=%n.settings
+module = %n
+manage-script-name = true
+callable = app
+
+# By default uWSGI server logs to stdout.
+# access log
+# req-logger = file:/var/log/uwsgi/%n-request.log
+# error, warning, info, etc.
+# logger = file:/var/log/uwsgi/%n.log

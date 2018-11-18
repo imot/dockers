@@ -1,0 +1,4 @@
+#!/bin/sh
+
+exec /usr/local/bin/memcached -u memcache -l 127.0.0.1 -v 2>&1
+#exec /usr/local/bin/memcached -u memcache -l 127.0.0.1 >> /var/log/memcached.log 2>&1
